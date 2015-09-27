@@ -6,7 +6,7 @@ php:
   - hhvm
 
 install:
-  - php script/test-with-laravel.php
+  - php scripts/test-with-laravel.php
   - composer require satooshi/php-coveralls:~0.6@stable
 
 before_script:
