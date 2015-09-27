@@ -2,8 +2,6 @@
 
 namespace Tacone\DataSource;
 
-use Tacone\DataSource\DelegatedArrayTrait;
-
 abstract class AbstractDataSource implements \Countable, \IteratorAggregate, \ArrayAccess
 {
     use DelegatedArrayTrait;
