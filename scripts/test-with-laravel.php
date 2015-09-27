@@ -34,7 +34,7 @@ require_once __DIR__.'/../tests/utils/laravel.php';
  */
 chdir(__DIR__.'/..');
 
-if (file_exists('composer.phar')) {
+if (!file_exists('composer.phar')) {
     echo 'downloading composer:'.PHP_EOL;
     passthru('php -r "readfile(\'https://getcomposer.org/installer\');" | php');
 }
@@ -51,7 +51,6 @@ echo "Install a new Laravel: ".PHP_EOL;
 passthru("php composer.phar create-project laravel/laravel $dir");
 
 // change dir to laravel and suck the deps
-echo 'here';
 chdir($dir);
 passthru("pwd");
 
