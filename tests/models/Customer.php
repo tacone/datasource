@@ -1,0 +1,21 @@
+<?php
+
+namespace Tacone\DataSource\Test;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Customer extends Model
+{
+    public function getFullNameAttribute()
+    {
+        return $this->name.' '.$this->surname;
+    }
+    public function details()
+    {
+        return $this->hasOne(CustomerDetail::class);
+    }
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+}

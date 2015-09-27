@@ -1,0 +1,25 @@
+{
+  "name": "tacone/datasource",
+  "description": "Wrapper for arrays, pojos and Eloquent",
+  "authors": [
+    {
+      "name": "tacone",
+      "email": "tacone@users.noreply.github.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.0",
+    "illuminate/support": ">= 4.2"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "@stable"
+  },
+  "autoload": {
+    "psr-4": {
+      "Tacone\\DataSource\\": "src/",
+      "Tacone\\DataSource\\Test\\": "tests/"
+    },
+    "files": ["src/functions.php"]
+  },
+  "minimum-stability": "stable"
+}
