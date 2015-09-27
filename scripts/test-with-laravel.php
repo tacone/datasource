@@ -47,8 +47,11 @@ if (file_exists($dir)) {
 }
 
 echo PHP_EOL;
-echo "Install a new Laravel: ".PHP_EOL;
-passthru("php composer.phar create-project laravel/laravel $dir");
+
+$laravelVersion = !empty($argv[1])? ' '.$argv[1]:'';
+
+echo "Install a new Laravel$laravelVersion: ".PHP_EOL;
+passthru("php composer.phar create-project laravel/laravel $dir$laravelVersion");
 
 // change dir to laravel and suck the deps
 chdir($dir);
