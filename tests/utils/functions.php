@@ -8,6 +8,11 @@ function assertModelArrayEqual($expected, $actual, $message = '')
             unset($args[$a][$k]['id']);
             unset($args[$a][$k]['created_at']);
             unset($args[$a][$k]['updated_at']);
+            foreach ($v as $field => $nothing) {
+                if (strpos($field, 'pivot') === 0) {
+                    unset($args[$a][$k][$field]);
+                }
+            }
         }
     }
 
