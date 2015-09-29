@@ -5,7 +5,7 @@ namespace Tacone\DataSource\Test;
 use Illuminate\Database\Eloquent\Collection;
 use Tacone\DataSource\DataSource;
 
-class EloquentBelongsToManyTest extends BaseTestCase
+class BelongsToManyTest extends BaseTestCase
 {
     public function testInteraction()
     {
@@ -19,9 +19,10 @@ class EloquentBelongsToManyTest extends BaseTestCase
         $source['code'] = 'a1';
         $source['shipping'] = 'home';
 
-        // let's try to follow the behaviour of eloquent as close as we can
+        // this is how eloquent behaves (always false)
         assertFalse(isset($order->books));
-        assertFalse(isset($source->books));
+        // this is how datasource behaves (always true)
+        assertTrue(isset($source['books']));
         assertInstanceOf(Collection::class, $order->books);
         assertInstanceOf(Collection::class, $source['books']);
     }
@@ -47,9 +48,10 @@ class EloquentBelongsToManyTest extends BaseTestCase
         $source['customer_id'] = 1;
         $source->save();
 
-        // yes, that's how eloquent behaves
+        // this is how eloquent behaves (always false)
         assertFalse(isset($order->books));
-        assertFalse(isset($source->books));
+        // this is how datasource behaves (always true)
+        assertTrue(isset($source['books']));
         assertInstanceOf(Collection::class, $order->books);
         assertInstanceOf(Collection::class, $source['books']);
         assertModelArrayEqual(Book::all()->toArray(), $source['books']->toArray());

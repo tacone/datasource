@@ -5,7 +5,7 @@ namespace Tacone\DataSource\Test;
 use Illuminate\Database\Eloquent\Collection;
 use Tacone\DataSource\DataSource;
 
-class EloquentHasManyTest extends BaseTestCase
+class HasManyTest extends BaseTestCase
 {
     public function testHasMany()
     {
@@ -19,9 +19,10 @@ class EloquentHasManyTest extends BaseTestCase
         $source['name'] = 'Frank';
         $source['surname'] = 'Sinatra';
 
-        // let's try to follow the behaviour of eloquent as close as we can
+        // this is how eloquent behaves (always false)
         assertFalse(isset($customer->orders));
-        assertFalse(isset($source->orders));
+        // this is how datasource behaves (always true)
+        assertTrue(isset($source['orders']));
         assertInstanceOf(Collection::class, $customer->orders);
         assertInstanceOf(Collection::class, $source['orders']);
     }
@@ -42,9 +43,10 @@ class EloquentHasManyTest extends BaseTestCase
         $source['surname'] = 'Sinatra';
         $source->save();
 
-        // yes, that's how eloquent behaves
+        // this is how eloquent behaves (always false)
         assertFalse(isset($customer->orders));
-        assertFalse(isset($source->orders));
+        // this is how datasource behaves (always true)
+        assertTrue(isset($source['orders']));
         assertInstanceOf(Collection::class, $customer->orders);
         assertInstanceOf(Collection::class, $source['orders']);
         assertModelArrayEqual(Order::all(), $source['orders']);
