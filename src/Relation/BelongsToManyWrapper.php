@@ -16,6 +16,7 @@ class BelongsToManyWrapper extends AbstractWrapper
         }
 
         $this->relation->sync($children);
+
         return $result;
     }
 

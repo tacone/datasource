@@ -6,7 +6,7 @@ require_once 'laravel.php';
 
 $laravelFolder = findTestLaravelInstallation();
 
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__.'/../../vendor/autoload.php';
 require_once "$laravelFolder/vendor/autoload.php";
 
 // I don't know how to include Framework/Assert/Functions.php

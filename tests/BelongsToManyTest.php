@@ -35,7 +35,7 @@ class BelongsToManyTest extends BaseTestCase
             ['title' => 'Happiness'],
             ['title' => 'Delight'],
         ]);
-        $this->createPivot('book_order',[
+        $this->createPivot('book_order', [
             ['book_id' => 1, 'order_id' => 1],
             ['book_id' => 2, 'order_id' => 1],
         ]);
@@ -70,11 +70,10 @@ class BelongsToManyTest extends BaseTestCase
             ['title' => 'Happinessx'],
             ['title' => 'Delightx'],
         ]);
-        $this->createPivot('book_order',[
+        $this->createPivot('book_order', [
             ['book_id' => 1, 'order_id' => 1],
             ['book_id' => 2, 'order_id' => 1],
         ]);
-
 
         $source = DataSource::make(Order::find(1));
         $source['code'] = 'a1';
@@ -111,9 +110,7 @@ class BelongsToManyTest extends BaseTestCase
             ['title' => 'Happiness'],
             ['title' => 'Delight'],
         ], Book::all()->toArray());
-
     }
-
 
     public function testCreateChildren()
     {

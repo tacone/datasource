@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 use Illuminate\Database\Eloquent\Model;
 
-
 function to_array($array)
 {
     switch (true) {
@@ -33,13 +32,13 @@ function to_array($array)
     throw new \LogicException(sprintf(
         'to_array() does not supports type: %s%s',
         gettype($array),
-        is_object($array) ? ' - ' . get_class($array) : ''
+        is_object($array) ? ' - '.get_class($array) : ''
     ));
 }
 
 function get_type_class($value)
 {
-    return gettype($value) . (is_object($value) ? '/' . get_class($value) : '');
+    return gettype($value).(is_object($value) ? '/'.get_class($value) : '');
 }
 
 function is_eloquent_object($object, $throw = false)
@@ -47,7 +46,7 @@ function is_eloquent_object($object, $throw = false)
     $result = $object instanceof Model || $object instanceof Collection;
     if ($throw && !$result) {
         throw new \LogicException(
-            'Expected Eloquent Model or Collection, got ' . get_type_class($object)
+            'Expected Eloquent Model or Collection, got '.get_type_class($object)
         );
     }
 

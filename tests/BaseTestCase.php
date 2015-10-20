@@ -1,6 +1,7 @@
 <?php
 
 namespace Tacone\DataSource\Test;
+
 require_once __DIR__.'/utils/laravel.php';
 
 use Illuminate\Database\Schema\Blueprint;
@@ -29,6 +30,7 @@ class BaseTestCase extends \Illuminate\Foundation\Testing\TestCase
     public function refreshApplication()
     {
         $app = bootstrapLaravel();
+
         return $app;
     }
     public function setUp()
@@ -45,7 +47,6 @@ class BaseTestCase extends \Illuminate\Foundation\Testing\TestCase
         ]);
         $this->createDatabase();
     }
-
 
     protected function createDatabase()
     {
@@ -94,13 +95,11 @@ class BaseTestCase extends \Illuminate\Foundation\Testing\TestCase
             $table->integer('book_id')->unsigned();
             $table->integer('order_id')->unsigned();
         });
-
-
     }
 
     protected function includeModels()
     {
-        foreach (glob(__DIR__ . '/models/*.php') as $file) {
+        foreach (glob(__DIR__.'/models/*.php') as $file) {
             require_once $file;
         }
     }
@@ -117,7 +116,8 @@ class BaseTestCase extends \Illuminate\Foundation\Testing\TestCase
             $model->save();
         }
     }
-    public function createPivot($tableName, $data) {
+    public function createPivot($tableName, $data)
+    {
         \DB::table($tableName)->truncate();
         foreach ($data as $record) {
             \DB::table($tableName)->insert($record);

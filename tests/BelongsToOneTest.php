@@ -2,7 +2,6 @@
 
 namespace Tacone\DataSource\Test;
 
-use Illuminate\Database\Eloquent\Collection;
 use Tacone\DataSource\DataSource;
 
 class BelongsToOneTest extends BaseTestCase
@@ -79,18 +78,16 @@ class BelongsToOneTest extends BaseTestCase
         $details->save();
         assertFalse(isset($details->customer)); // always false!
         assertInstanceOf(Customer::class, $details->customer);
-
     }
 
     public function testUpdateChildren()
     {
         $this->createModels(CustomerDetail::class, [
-            ['biography' => 'A nice life!x', 'accepts_cookies' => "1", 'customer_id' => 1]
+            ['biography' => 'A nice life!x', 'accepts_cookies' => '1', 'customer_id' => 1],
         ]);
         $this->createModels(Customer::class, [
             ['name' => 'Frankx', 'surname' => 'Sinatrax'],
         ]);
-
 
         $source = DataSource::make(CustomerDetail::find(1));
         $source['id'] = 1;
@@ -102,14 +99,14 @@ class BelongsToOneTest extends BaseTestCase
 
         assertModelArrayEqual([
             [
-                "customer_id" => "1",
-                "biography" => "A nice life!",
-                "accepts_cookies" => '0',
-                "customer" => [
-                    "id" => "1",
-                    "name" => "Frank",
-                    "surname" => "Sinatra",
-                ]
+                'customer_id' => '1',
+                'biography' => 'A nice life!',
+                'accepts_cookies' => '0',
+                'customer' => [
+                    'id' => '1',
+                    'name' => 'Frank',
+                    'surname' => 'Sinatra',
+                ],
             ],
         ], CustomerDetail::with('customer')->get()->toArray());
 
@@ -122,30 +119,28 @@ class BelongsToOneTest extends BaseTestCase
 
         assertModelArrayEqual([
             [
-                "customer_id" => "1",
-                "biography" => "A nice life!",
-                "accepts_cookies" => '0',
-                "customer" => [
-                    "id" => "1",
-                    "name" => "Frank",
-                    "surname" => "Sinatra",
-                ]
+                'customer_id' => '1',
+                'biography' => 'A nice life!',
+                'accepts_cookies' => '0',
+                'customer' => [
+                    'id' => '1',
+                    'name' => 'Frank',
+                    'surname' => 'Sinatra',
+                ],
             ],
         ], CustomerDetail::with('customer')->get()->toArray());
 
         assertModelArrayEqual([
             ['name' => 'Frank', 'surname' => 'Sinatra'],
         ], Customer::all()->toArray());
-
     }
-
 
     public function testCreateChildren()
     {
         $this->createModels(CustomerDetail::class, []);
         $this->createModels(Customer::class, []);
 
-        $source = DataSource::make(new CustomerDetail);
+        $source = DataSource::make(new CustomerDetail());
         $source['id'] = 1;
         $source['biography'] = 'A nice life!';
         $source['accepts_cookies'] = 0;
@@ -155,14 +150,14 @@ class BelongsToOneTest extends BaseTestCase
 
         assertModelArrayEqual([
             [
-                "customer_id" => "1",
-                "biography" => "A nice life!",
-                "accepts_cookies" => '0',
-                "customer" => [
-                    "id" => "1",
-                    "name" => "Frank",
-                    "surname" => "Sinatra",
-                ]
+                'customer_id' => '1',
+                'biography' => 'A nice life!',
+                'accepts_cookies' => '0',
+                'customer' => [
+                    'id' => '1',
+                    'name' => 'Frank',
+                    'surname' => 'Sinatra',
+                ],
             ],
         ], CustomerDetail::with('customer')->get()->toArray());
 
@@ -175,20 +170,19 @@ class BelongsToOneTest extends BaseTestCase
 
         assertModelArrayEqual([
             [
-                "customer_id" => "1",
-                "biography" => "A nice life!",
-                "accepts_cookies" => '0',
-                "customer" => [
-                    "id" => "1",
-                    "name" => "Frank",
-                    "surname" => "Sinatra",
-                ]
+                'customer_id' => '1',
+                'biography' => 'A nice life!',
+                'accepts_cookies' => '0',
+                'customer' => [
+                    'id' => '1',
+                    'name' => 'Frank',
+                    'surname' => 'Sinatra',
+                ],
             ],
         ], CustomerDetail::with('customer')->get()->toArray());
 
         assertModelArrayEqual([
             ['name' => 'Frank', 'surname' => 'Sinatra'],
         ], Customer::all()->toArray());
-
     }
 }

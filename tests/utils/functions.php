@@ -14,6 +14,7 @@ function purgeUnwantedAttributes($array)
             $array[$key] = purgeUnwantedAttributes($value);
         }
     }
+
     return $array;
 }
 

@@ -36,8 +36,7 @@ class DataSourceTest extends BaseTestCase
         try {
             assertSame([], $source->toArray());
             assertTrue(false, 'Scalars should never be converted to array');
-        } catch(\Exception $e) {
-
+        } catch (\Exception $e) {
         }
     }
 
