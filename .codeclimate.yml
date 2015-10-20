@@ -14,3 +14,4 @@ exclude_paths:
   - ".*"
   - "*.md"
   - "*.json"
+  - "*.xml"
