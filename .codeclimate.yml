@@ -11,4 +11,6 @@ ratings:
   - "**.php"
   - "**.module"
   - "**.inc"
-exclude_paths: ["tests"]
+exclude_paths:
+  - tests/**/*
+  - ./*
