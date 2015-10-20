@@ -11,3 +11,6 @@ ratings:
   - "**.inc"
 exclude_paths:
   - "tests/**/*"
+  - ".*"
+  - "*.md"
+  - "*.json"
