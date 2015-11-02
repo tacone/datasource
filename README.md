@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/tacone/datasource.svg?branch=master)](https://travis-ci.org/tacone/datasource)
 [![Coverage Status](https://coveralls.io/repos/tacone/datasource/badge.svg?branch=master&service=github)](https://coveralls.io/github/tacone/datasource?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/tacone/datasource/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/tacone/datasource/?branch=master)
 
 A generic, wrapper object to easily access arrays, plain objects, laravel models
 using the dotted syntax.
